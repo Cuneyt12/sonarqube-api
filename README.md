@@ -9,4 +9,4 @@
 ##### requirements.txt dosyası içindeki gereksinimleri yükleyin
 ```bash
   pip install -r requirements.txt
-```
+``` komutunu çalıştırın
