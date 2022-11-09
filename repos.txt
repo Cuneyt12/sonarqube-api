@@ -1,0 +1,3 @@
+https://github.com/qos-ch/slf4j.git
+https://github.com/Cuneyt12/sonarqube-api.git
+https://github.com/Cuneyt12/springboot-many-to-many.git
