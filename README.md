@@ -9,4 +9,6 @@
 ##### requirements.txt dosyası içindeki gereksinimleri yükleyin
 ```bash
   pip install -r requirements.txt
-``` komutunu çalıştırın
+``` 
+##### Analizini gerçekleştirmek istediğiniz projelerin master branchlerinin git linklerini repos.txt dosyasına kopyalayın.
+##### sonar.py dosyasını çalıştırdıktan sonra proje klasörü içindeki `rapor` klasöründen analiz sonuçlarını görebilirsiniz.
