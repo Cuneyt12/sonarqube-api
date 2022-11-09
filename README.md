@@ -7,7 +7,6 @@
 ##### Sonar başlatıldıktan sonra localhost:9000 adresine gidip kullanıcı adı ve şifre belirleyin
 ##### Proje dosyası içindeki sonar.py ve GetDetails.py dosyalarında bulunan username ve password alanlarını kendinize göre doldurun
 ##### requirements.txt dosyası içindeki gereksinimleri yükleyin
-
 ```bash
   pip install -r requirements.txt
 ```
