@@ -6,9 +6,9 @@
 ##### .\sonarqube-9.6.1.59531\bin\windows-x86-64 klasörü içinden StartSonar.bat dosyasını çalıştırın.
 ##### Sonar başlatıldıktan sonra localhost:9000 adresine gidip kullanıcı adı ve şifre belirleyin
 ##### Proje dosyası içindeki sonar.py ve GetDetails.py dosyalarında bulunan username ve password alanlarını kendinize göre doldurun
-##### requirements.txt dosyası içindeki gereksinimleri yükleyin
+##### `requirements.txt` dosyası içindeki gereksinimleri yükleyin
 ```bash
   pip install -r requirements.txt
 ``` 
 ##### Analizini gerçekleştirmek istediğiniz projelerin master branchlerinin clone linklerini repos.txt dosyasına kopyalayın.
-##### sonar.py dosyasını çalıştırdıktan sonra proje klasörü içindeki `rapor` klasöründen analiz sonuçlarını görebilirsiniz.
+##### `sonar.py` dosyasını çalıştırdıktan sonra proje klasörü içindeki `rapor` klasöründen analiz sonuçlarını görebilirsiniz.
