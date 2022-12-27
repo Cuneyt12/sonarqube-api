@@ -47,14 +47,13 @@ for c in range(len(myNames)):
         if not projeVar:
             sonar.user_tokens.revoke_user_token(name=nameOfProject(myNames[c]))
             sonar.projects.create_project(project=nameOfProject(myNames[c]), name=nameOfProject(myNames[c]), visibility="public")
-            print(nameOfProject(myNames[c]) + " oluşturuldu.")
+            # print(nameOfProject(myNames[c]) + " oluşturuldu.")
             user_token = sonar.user_tokens.generate_user_token(name=nameOfProject(myNames[c]))
-            print(user_token["token"])
+            # print(user_token["token"])
             proper = open(repos + "\\sonar-project.properties", "w")
             proper.write("sonar.projectKey=" + nameOfProject(myNames[c]) + "\nsonar.projectName=" + nameOfProject(myNames[c]) + 
-                "\nsonar.projectVersion=1.0\nsonar.host.url=" + url + "\nsonar.login=" + user_token["token"] + 
-                    "\nsonar.sourceEncoding=UTF-8" +
-                        "\nsonar.java.binaries=.\nsonar.login=" + username + "\nsonar.password=" + password + "\nsonar.sources=./" + nameOfProject(myNames[c]))
+                "\nsonar.projectVersion=1.0\nsonar.host.url=" + url + "\nsonar.login=" + user_token["token"] + "\nsonar.scm.exclusions.disabled=true" +
+                        "\nsonar.java.binaries=.\nsonar.sources=./" + nameOfProject(myNames[c]))
             proper.close()
             os.system(f'cmd /c "cd {repos} && sonar-scanner"')
 resultDir = os.getcwd() + "\\rapor"
