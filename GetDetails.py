@@ -43,4 +43,3 @@ def listAllDetails(projectKey, type, path):
         if count == 10000:
             break
         i += 1
-#https://github.com/google/guava.git
