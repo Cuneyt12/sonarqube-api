@@ -10,7 +10,7 @@
 ```bash
   pip install -r requirements.txt
 ```
-##### Bilgisayarınızdaki bir projenin analizini yapmak istiyorsanız, bu proje klasörünün içinde 'repos' adında bir klasör oluşturun
+##### Bilgisayarınızdaki bir projenin analizini yapmak istiyorsanız, bu(sonarqube-api) proje klasörünün içinde 'repos' adında bir klasör oluşturun
 ##### Projenizi, 'repos' klasörünün içine kopyalayın ve uygulamayı başlattıktan sonra adımları takip edin.
 ##### Github projelerinin analizini gerçekleştirmek istiyorsanız, istediğiniz projelerin master branchlerinin clone linklerini repos.txt dosyasına kaydedin.
 ##### `sonar.py` dosyasını çalıştırdıktan sonra proje klasörü içindeki `rapor` klasöründen analiz sonuçlarını görebilirsiniz.
