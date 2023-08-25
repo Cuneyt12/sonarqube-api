@@ -12,5 +12,5 @@
 ```
 ##### Bilgisayarınızdaki bir projenin analizini yapmak istiyorsanız, bu proje klasörünün içinde 'repos' adında bir klasör oluşturun
 ##### Projenizi, 'repos' klasörünün içine kopyalayın ve uygulamayı başlattıktan sonra adımları takip edin.
-##### Analizini gerçekleştirmek istediğiniz projelerin master branchlerinin clone linklerini repos.txt dosyasına kaydedin.
+##### Github projelerinin analizini gerçekleştirmek istiyorsanız, istediğiniz projelerin master branchlerinin clone linklerini repos.txt dosyasına kaydedin.
 ##### `sonar.py` dosyasını çalıştırdıktan sonra proje klasörü içindeki `rapor` klasöründen analiz sonuçlarını görebilirsiniz.
