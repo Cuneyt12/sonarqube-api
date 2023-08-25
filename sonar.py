@@ -25,37 +25,73 @@ def nameOfProject(baglanti):
     source = gitrep.split("/")
     boyut = len(source)
     sourcePath = source[boyut - 1]
-    baseSource = os.getcwd() #+ "\\" + sourcePath[0]
+    baseSource = os.getcwd()
     baseSource = baseSource.replace("\\", "/")
     sourcePath = sourcePath[: len(sourcePath) - 4]
     return sourcePath
 
+
+
 metrikler = {"bugs,vulnerabilities,security_hotspots_reviewed,code_smells,coverage,duplicated_lines_density,ncloc,security_hotspots"}
 
+
+
 projectList = list(sonar.projects.search_projects())
+
+
+
+while 1:
+    choose = input("Repo indirip tarama yapmak için 1'e, var olan projeyi taramak için 2'ye basın (Seçiminiz 2 ise proje klasörü içinde 'repos' adında bir klasör oluşturup, projenizi bu klasöre kopyalamanız gerekmektedir.)")
+    if choose == "1" or choose == "2":
+        break
+
 for c in range(len(myNames)):
+    print(len(projectList))
     projeVar = False
-    CreateDirectory.create(repos)
-    if not os.path.exists(nameOfProject(myNames[c])):
+    if choose == "1":
+        CreateDirectory.create(repos)
+    if not os.path.exists(nameOfProject(myNames[c])) and choose == "1":
         print(myNames[c].strip() + " klonlanıyor...")
         git.Git(repos).clone(myNames[c].strip())
-        for proj in projectList:
-            if proj["key"] == nameOfProject(myNames[c]):
-                print(nameOfProject(myNames[c]) + " isimli project key daha önce kullanılmış")
-                projeVar = True
-                break
-        if not projeVar:
-            sonar.user_tokens.revoke_user_token(name=nameOfProject(myNames[c]))
-            sonar.projects.create_project(project=nameOfProject(myNames[c]), name=nameOfProject(myNames[c]), visibility="public")
-            # print(nameOfProject(myNames[c]) + " oluşturuldu.")
-            user_token = sonar.user_tokens.generate_user_token(name=nameOfProject(myNames[c]))
-            # print(user_token["token"])
-            proper = open(repos + "\\sonar-project.properties", "w")
-            proper.write("sonar.projectKey=" + nameOfProject(myNames[c]) + "\nsonar.projectName=" + nameOfProject(myNames[c]) + 
-                "\nsonar.projectVersion=1.0\nsonar.host.url=" + url + "\nsonar.login=" + user_token["token"] + "\nsonar.scm.exclusions.disabled=true" +
-                        "\nsonar.java.binaries=.\nsonar.sources=./" + nameOfProject(myNames[c]))
-            proper.close()
-            os.system(f'cmd /c "cd {repos} && sonar-scanner"')
+
+
+    klasor = input("Proje ismini girin(Proje klasör ismiyle aynı olmak zorunda).")
+
+    for proj in projectList:
+        deneme = nameOfProject(myNames[c] if choose == "1" else klasor)
+        print(deneme)
+        if proj["key"] == deneme:
+            print(nameOfProject(myNames[c] if choose == "1" else klasor) + " isimli project key daha önce kullanılmış")
+            projeVar = True
+            break
+
+
+
+    if not projeVar:
+        print("not proje var")
+        sonar.user_tokens.revoke_user_token(name=nameOfProject(myNames[c]) if choose == "1" else klasor)
+        sonar.projects.create_project(project=nameOfProject(myNames[c]) if choose == "1" else klasor, name=nameOfProject(myNames[c]) if choose == "1" else klasor, visibility="public")
+
+
+
+
+        if choose == "1":
+            print(nameOfProject(myNames[c]) + " oluşturuldu.")
+
+        user_token = sonar.user_tokens.generate_user_token(name=nameOfProject(myNames[c]) if choose == "1" else klasor)
+        print(user_token["token"])
+
+
+        proper = open(repos + "\\sonar-project.properties", "w")
+
+
+
+        proper.write("sonar.projectKey=" + (nameOfProject(myNames[c]) if choose == "1" else klasor) + "\nsonar.projectName=" + (nameOfProject(myNames[c])  if choose == "1" else klasor) + 
+                "\nsonar.projectVersion=1.0\nsonar.host.url=" + url + "\nsonar.login=" + user_token["token"] + 
+                    "\nsonar.sourceEncoding=UTF-8" +
+                        "\nsonar.java.binaries=.\nsonar.login=" + username + "\nsonar.password=" + password + "\nsonar.sources=./" + (nameOfProject(myNames[c])  if choose == "1" else klasor))
+        proper.close()
+        os.system(f'cmd /c "cd {repos} && sonar-scanner"')
 resultDir = os.getcwd() + "\\rapor"
 raporDetay = resultDir + "\\rapor detay"
 CreateDirectory.create(resultDir)
